@@ -36,7 +36,7 @@ limitations under the License.
       style="height: calc(100vh - 210px); overflow: hidden"
     >
       <template v-slot:body="props">
-        <q-tr :props="props" class="table_body">
+        <q-tr :props="props" class="table_body" data-test="attribute">
           <q-td
             key="status"
             :props="props"
@@ -63,6 +63,7 @@ limitations under the License.
             <q-toggle
               class="q-mt-xs"
               v-model="selection"
+              data-test="attribute-enable-toggle"
               :val="hashAttributeIdClusterId(props.row.id, selectedCluster.id)"
               indeterminate-value="false"
               keep-color
@@ -154,7 +155,9 @@ limitations under the License.
           <q-td key="type" :props="props" auto-width>{{
             props.row.type ? props.row.type.toUpperCase() : 'UNKNOWN'
           }}</q-td>
-          <q-td key="default" :props="props" auto-width>
+          <q-td key="default" :props="props" 
+              data-test="attribute-value"
+              auto-width>
             <q-input
               dense
               bottom-slots
